@@ -2,4 +2,4 @@
 set -euo pipefail
 
 cd "$(dirname "$0")"
-exec python3 sandbox/run.py
+exec python3 -m sandbox.run
