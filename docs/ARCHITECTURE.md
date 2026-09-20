@@ -1,21 +1,18 @@
 # Architecture
 
-## Runtime loop
+AI AutoPlay is split into independent layers:
 
-1. Observation arrives.
-2. The agent chooses an abstract action.
-3. The sandbox executes that action.
-4. The sandbox produces an observation.
-5. Feedback is converted to -1, 0, or +1.
-6. The learner updates its action scores.
-7. The next 30 FPS frame begins.
+- `vision/` describes frame observations.
+- `observation/` defines environment-facing observation contracts.
+- `policy/` chooses abstract actions.
+- `agent/` stores action history and reward learning.
+- `memory/` stores experiences.
+- `rewards/` converts events into -1/0/+1 feedback.
+- `training/` connects policy, learning, and replay memory.
+- `storage/` persists checkpoints locally.
+- `core/` provides shared state and events.
+- `telemetry`/`logging` records runtime information.
+- `adapters/` connects custom environments to the common interfaces.
+- `ui/` and `cli/` expose lightweight local tools.
 
-## Timing
-
-The target period is 1/30 second, approximately 33.333 ms.
-
-The frame loop uses a monotonic clock for scheduling so processing time does not permanently shift later frames.
-
-## Safety boundary
-
-The repository is structured around a user-owned/custom sandbox. It does not implement public-game input injection, anti-cheat bypasses, or live-match automation.
+The architecture deliberately keeps environment adapters separate from public-game automation or anti-cheat bypass mechanisms.
