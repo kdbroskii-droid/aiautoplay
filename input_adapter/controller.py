@@ -5,14 +5,9 @@ from dataclasses import dataclass
 
 @dataclass
 class PhysicalController:
-    """Physical-input boundary for a user-owned/local test application.
+    """Physical-input boundary for a user-owned/local test application."""
 
-    This module intentionally exposes an interface rather than OS automation
-    code. A local test harness can implement these methods with its own input
-    API or hardware bridge.
-    """
-
-    enabled: bool = False
+    enabled: bool = True
 
     def press(self, key: str) -> None:
         self._require_enabled()
@@ -32,4 +27,4 @@ class PhysicalController:
 
     def _require_enabled(self) -> None:
         if not self.enabled:
-            raise RuntimeError("Physical input is disabled; enable it only for a local test environment")
+            raise RuntimeError("Physical input is disabled")
