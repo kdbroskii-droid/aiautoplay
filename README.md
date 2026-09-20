@@ -1,21 +1,22 @@
-# AI AutoPlay — Safe Sandbox Learning Core
+# AI AutoPlay — Chromebook
 
-A 30 FPS reinforcement-learning prototype for a user-owned/custom sandbox.
+A Chromebook/Linux-first 30 FPS AI learning core for a user-owned/custom test environment.
 
-## What it does
-- Samples one observation every 33.3 ms.
-- Records the last 30 actions.
-- Uses three feedback values:
-  - green = +1 (good)
-  - orange = 0 (needs to be quicker)
-  - red = -1 (bad)
-- Learns action/feedback associations without injecting input into public games.
-- Includes a simple simulator so the learning loop can be tested before connecting any game.
+## Core loop
+- 30 FPS (~33.3 ms per frame)
+- 30-frame action history
+- GREEN = +1 — good
+- ORANGE = 0 — needs to be quicker
+- RED = -1 — bad
+- Keyboard/mouse actions represented as an abstract action space
+- Frame-by-frame learning logs
 
-## Run
+## Chromebook
+
+Run from the Linux terminal:
 
 ```bash
 python3 sandbox/run.py
 ```
 
-This project intentionally does not include public-game input injection, anti-cheat bypasses, or automation for live matches.
+The project is designed to be tested in a sandbox/custom environment. It does not include public-game input injection or anti-cheat bypasses.
