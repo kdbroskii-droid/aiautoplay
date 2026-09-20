@@ -2,49 +2,31 @@
 
 A Chromebook/Linux-first 30 FPS AI learning core for a user-owned/custom test environment.
 
-## Repository structure
-
-- `agent/` — action, feedback, timing, history, and learning core
-- `sandbox/` — deterministic toy environment and runner
-- `tests/` — automated checks
-- `config/` — project configuration documentation
-- `docs/` — architecture and design notes
-- `logs/` — runtime logs (ignored by Git)
-- `run.sh` — Chromebook/Linux launcher
-
-## Core loop
-
-30 FPS → observe → choose abstract action → sandbox step → feedback → learn → repeat.
-
-Feedback:
-- GREEN = +1 — good
-- ORANGE = 0 — needs to be quicker
-- RED = -1 — bad
-
-## Chromebook
-
-Open the Linux terminal in ChromeOS and run:
-
-```bash
-cd ~/aiautoplay
-python3 sandbox/run.py
-```
-
-Or:
+## Run
 
 ```bash
 ./run.sh
 ```
 
-## Tests
-
-If pytest is installed:
+Diagnostics:
 
 ```bash
-python3 -m pytest
+python3 -m cli.main info
 ```
 
-The project uses the Python standard library for its runtime.
+Validation:
+
+```bash
+python3 -m tools.validate
+```
+
+Tests:
+
+```bash
+python3 -m pytest -q
+```
+
+The runtime uses Python's standard library. The repository includes action handling, feedback, history, learning, sandboxing, vision, observations, policies, memory, training, rewards, storage, logging, core events, Chromebook diagnostics, evaluation, adapters, UI, profiling, benchmarks, examples, tests, and GitHub CI.
 
 ## Safety boundary
 
