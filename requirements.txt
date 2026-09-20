@@ -1,0 +1,2 @@
+# AI AutoPlay intentionally uses Python's standard library only.
+# Python 3.10+ recommended.
