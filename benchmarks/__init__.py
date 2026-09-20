@@ -1,0 +1,1 @@
+"""Small deterministic performance benchmarks."""
