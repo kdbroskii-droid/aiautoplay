@@ -35,7 +35,6 @@ class RewardLearner:
     def observe_feedback(self, reward: int) -> None:
         if reward not in (-1, 0, 1):
             raise ValueError("reward must be -1, 0, or 1")
-
         self.stats.observations += 1
         if reward == 1:
             self.stats.good += 1
@@ -43,12 +42,13 @@ class RewardLearner:
             self.stats.too_slow += 1
         else:
             self.stats.bad += 1
-
-        # Recent actions receive more credit/blame than older actions.
         for distance, name in enumerate(reversed(self.history), start=1):
             weight = 1.0 / distance
             self.scores[name] += reward * weight
             self.counts[name] += 1
+
+    def score(self, action: str) -> float:
+        return self.scores[action]
 
     def choose_action(self, actions: list[Action]) -> Action:
         if not actions:
